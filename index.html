@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+  <h1 id="dynamicText">Hello, World!</h1>
+  <button id="changeTextBtn">Change Text</button>
+  <button id="highlightBtn">Toggle Highlight</button>
+  <button id="addElementBtn">Add Element</button>
+  <button id="removeElementBtn">Remove Element</button>
+
+  <div id="container">
+    </div>
+
+  <script>
+    const dynamicTextElement = document.getElementById('dynamicText');
+    const changeTextButton = document.getElementById('changeTextBtn');
+    const highlightButton = document.getElementById('highlightBtn');
+    const addElementButton = document.getElementById('addElementBtn');
+    const removeElementButton = document.getElementById('removeElementBtn');
+    const container = document.getElementById('container');
+    let newDiv = null; // To keep track of the added element
+
+    // Function to change the text content
+    changeTextButton.addEventListener('click', () => {
+      dynamicTextElement.textContent = 'The text has been updated!';
+    });
+
+    // Function to toggle a CSS class for highlighting
+    highlightButton.addEventListener('click', () => {
+      dynamicTextElement.classList.toggle('highlighted');
+    });
+
+    // Function to add a new element
+    addElementButton.addEventListener('click', () => {
+      if (!newDiv) {
+        newDiv = document.createElement('div');
+        newDiv.id = 'newElement';
+        newDiv.textContent = 'This is a dynamically added element.';
+        container.appendChild(newDiv);
+      }
+    });
+
+    // Function to remove the added element
+    removeElementButton.addEventListener('click', () => {
+      if (newDiv) {
+        container.removeChild(newDiv);
+        newDiv = null; // Reset the reference
+      }
+    });
+  </script>
+
+</body>
+</html>
